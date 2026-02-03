@@ -1,0 +1,505 @@
+{
+  "info": {
+    "_postman_id": "cf904334-1c45-4d89-be67-8fbb07788bfe",
+    "name": "PetStore API Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51786300",
+    "_collection_link": "https://go.postman.co/collection/51786300-cf904334-1c45-4d89-be67-8fbb07788bfe?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/pet",
+      "item": [
+        {
+          "name": "Positive",
+          "item": [
+            {
+              "name": "POST /pet",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 101,\n  \"category\": {\n    \"id\": 1,\n    \"name\": \"Кошки\"\n  },\n  \"name\": \"Барсик\",\n  \"photoUrls\": [\n    \"https://example.com/cat.jpg\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 1,\n      \"name\": \"игривый\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/pet",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET /{petid}",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/pet/101",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "101"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT /pet",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 101,\n  \"category\": {\n    \"id\": 1,\n    \"name\": \"Кошки\"\n  },\n  \"name\": \"Барсик Обнова\",\n  \"photoUrls\": [\n    \"https://example.com/cat.jpg\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 1,\n      \"name\": \"игривый\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/pet/",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE /pet",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/v2/pet/101",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "101"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Negative",
+          "item": [
+            {
+              "name": "POST /pet",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"mistake\",\n  \"category\": {\n    \"id\": 1,\n    \"name\": \"Кошки\"\n  },\n  \"name\": \"Барсик\",\n  \"photoUrls\": [\n    \"https://example.com/cat.jpg\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 1,\n      \"name\": \"игривый\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/pet",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET /{petid}",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/v2/pet/0",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "0"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "/store",
+      "item": [
+        {
+          "name": "Positive",
+          "item": [
+            {
+              "name": "POST /order",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": 101,\n    \"petId\": 1,\n    \"quantity\": 5,\n    \"shipDate\": \"2026-02-01T22:00:00Z\",\n    \"status\": \"placed\",\n    \"complete\": false\n}\n\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/store/order",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "store",
+                    "order"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET /order",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/store/order/101",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "store",
+                    "order",
+                    "101"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET /inventory",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/v2/store/inventory",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "store",
+                    "inventory"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Negative",
+          "item": [
+            {
+              "name": "POST /order",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": 102,\n    \"petId\": \"ABC\",\n    \"quantity\": 5,\n    \"shipDate\": \"2026-02-01T22:00:00Z\",\n    \"status\": \"placed\",\n    \"complete\": false\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/store/order",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "store",
+                    "order"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET /order",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseURL}}/v2/store/order/10001",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "store",
+                    "order",
+                    "10001"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "/user",
+      "item": [
+        {
+          "name": "POST /user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 103,\n    \"username\": \"andeytop\",\n    \"firstName\": \"Andrey\",\n    \"lastName\": \"Udmurtov\",\n    \"email\": \"anreyrealboy123@gmail.com\",\n    \"password\": \"admin\",\n    \"phone\": \"+7 (800) 555-35-35\",\n    \"userStatus\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/v2/user",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /createWithList",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"id\": 102,\n        \"username\": \"matvey0205\",\n        \"firstName\": \"Matvey\",\n        \"lastName\": \"Mayorov\",\n        \"email\": \"matvey.may646@gmail.com\",\n        \"password\": \"admin\",\n        \"phone\": \"+7 (800) 555-35-35\",\n        \"userStatus\": 1\n    },\n    {\n        \"id\": 101,\n        \"username\": \"anotheruser\",\n        \"firstName\": \"Nikolay\",\n        \"lastName\": \"Borisov\",\n        \"email\": \"ememdems@gmail.com\",\n        \"password\": \"turbulence\",\n        \"phone\": \"+7 (800) 666-26-26\",\n        \"userStatus\": 1\n    } \n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/v2/user/createWithList",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "createWithList"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /{username}",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseURL}}/v2/user/matvey0205",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "matvey0205"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /{username}",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 102,\n    \"username\": \"matvey0205\",\n    \"firstName\": \"Matvey\",\n    \"lastName\": \"Mayorov\",\n    \"email\": \"matteus123@gmail.com\",\n    \"password\": \"terminator\",\n    \"phone\": \"+7 (800) 555-35-35\",\n    \"userStatus\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/v2/user/matvey0205",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "matvey0205"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /login",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/v2/user/login?username=matvey0205&password=admin",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "matvey0205",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "admin",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /loguot",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/v2/user/logout",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /{userid}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 103,\n    \"username\": \"andeytop\",\n    \"firstName\": \"Andrey\",\n    \"lastName\": \"Udmurtov\",\n    \"email\": \"anreyrealboy123@gmail.com\",\n    \"password\": \"admin\",\n    \"phone\": \"+7 (800) 555-35-35\",\n    \"userStatus\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/v2/user/andeytop",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "andeytop"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "https://petstore.swagger.io",
+      "type": "default"
+    }
+  ]
+}
